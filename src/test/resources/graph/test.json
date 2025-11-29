@@ -1,0 +1,16 @@
+{
+  "name": "reco",
+  "processors": [
+    "initProcessor",
+    "graphRecoProcessor",
+    "textRecoProcessor",
+    "endProcessor"
+  ],
+  "config": {
+  },
+  "graph": {
+    "initProcessor": ["graphRecoProcessor", "textRecoProcessor"],
+    "graphRecoProcessor": "endProcessor",
+    "textRecoProcessor": "endProcessor"
+  }
+}
