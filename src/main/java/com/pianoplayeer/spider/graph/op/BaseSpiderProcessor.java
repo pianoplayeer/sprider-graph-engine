@@ -34,4 +34,9 @@ public abstract class BaseSpiderProcessor {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return processorName + "#" + this.getClass().getName();
+	}
+	
 }

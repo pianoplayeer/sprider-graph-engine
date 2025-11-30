@@ -1,8 +1,6 @@
-package com.pianoplayeer.spider.graph.executor;
+package com.pianoplayeer.spider.graph.config;
 
 import lombok.Getter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
@@ -16,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class GraphExecutorConfig {
 	
 	@Getter
-	private static final ExecutorService operatorExecuter =
+	private static final ExecutorService operatorExecutor =
 			new ThreadPoolExecutor(16, 32,
 					1, TimeUnit.SECONDS, new SynchronousQueue<>(),
 					new ThreadPoolExecutor.CallerRunsPolicy());
