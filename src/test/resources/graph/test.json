@@ -1,11 +1,11 @@
 {
   "name": "reco",
-  "processors": [
-    "initProcessor",
-    "graphRecoProcessor",
-    "textRecoProcessor",
-    "endProcessor"
-  ],
+  "processors": {
+    "initProcessor": "com.pianoplayeer.spider.graph.op.MyProcessor",
+    "graphRecoProcessor": "com.pianoplayeer.spider.graph.op.MyProcessor",
+    "textRecoProcessor": "com.pianoplayeer.spider.graph.op.MyProcessor",
+    "endProcessor": "com.pianoplayeer.spider.graph.op.MyProcessor"
+  },
   "config": {
   },
   "graph": {

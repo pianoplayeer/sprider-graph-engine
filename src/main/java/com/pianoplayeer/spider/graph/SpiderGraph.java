@@ -5,24 +5,34 @@ import com.pianoplayeer.spider.graph.config.GraphExecutorConfig;
 import com.pianoplayeer.spider.graph.context.SpiderContext;
 import com.pianoplayeer.spider.graph.exception.MissingOpFutureException;
 import com.pianoplayeer.spider.graph.future.SpiderLazyFuture;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @date 2025/11/29
  * @package com.pianoplayeer.spider.graph
  */
+@Getter
+@Setter
 public class SpiderGraph extends BaseOperator {
 	
-	private Map<String, BaseOperator> operatorMap;
+	private Map<String, BaseOperator> operatorMap = new HashMap<>();
 	
-	private Map<String, Map<String, Object>> processorConfigs;
+	private Map<String, Map<String, Object>> processorConfigs = new HashMap<>();
 	
-	private List<BaseOperator> entryList;
+	private Map<String, String> processorTypeMap = new HashMap<>();
 	
-	private List<BaseOperator> endList;
+	private Map<String, String> graph = new HashMap<>();
+	
+	private List<BaseOperator> entryList = new ArrayList<>();
+	
+	private List<BaseOperator> endList = new ArrayList<>();
 	
 	/**
 	 * TODO: use topology sort to execute each operator
@@ -42,10 +52,6 @@ public class SpiderGraph extends BaseOperator {
 			nextExecOps = new HashSet<>();
 		}
 		
-		CompletableFuture.allOf(
-				endList.stream().map(e -> opFutureMap.get(e))
-						.toArray(CompletableFuture[]::new)
-		);
 	}
 	
 	@Override
@@ -53,5 +59,4 @@ public class SpiderGraph extends BaseOperator {
 		return false;
 	}
 	
-
 }

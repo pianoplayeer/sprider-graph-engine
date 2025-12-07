@@ -28,11 +28,12 @@ public class SpiderOperator extends BaseOperator {
 		processor.postProcess();
 		
 		stopWatch.stop();
-		BizLogger.info(processor, "processor has finished, cost: {} ms", stopWatch.getTotalTimeMillis());
+		SpiderLogger.info(this, "processor has finished, cost: {} ms", stopWatch.getTotalTimeMillis());
 	}
 	
 	@Override
 	public boolean isTimeoutEnable() {
 		return processor.isTimeoutEnable();
 	}
+	
 }
